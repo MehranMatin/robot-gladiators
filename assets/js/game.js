@@ -2,15 +2,12 @@ var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
-// You can also log multiple values at once like this
-console.log(playerName, playerAttack, playerHealth);
 
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
-console.log(enemyNames, enemyHealth, enemyAttack);
 
-// fight function
+// fight function (now with parameter for enemy's name)
 var fight = function(enemyName) {
   while (playerHealth > 0 && enemyHealth > 0) {
     // ask player if they'd like to fight or run
@@ -87,9 +84,6 @@ var startGame = function() {
       // reset enemyHealth before starting new fight
       enemyHealth = 50;
 
-      // use debugger to pause script from running and check what's going on at that moment in the code
-      // debugger;
-
       // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
       fight(pickedEnemyName);
 
@@ -103,7 +97,9 @@ var startGame = function() {
           shop();
         }
       }
-    } else {
+    }
+      // if player is not alive, break out of the loop and let endGame function run
+      else {
       window.alert("You have lost your robot in battle! Game Over!");
       break;
     }
@@ -124,20 +120,22 @@ var endGame = function() {
 
   // ask player if they'd like to play again
   var playAgainConfirm = window.confirm("Would you like to play again?");
+
   if (playAgainConfirm) {
     // restart the game
     startGame();
-  }
-  else {
-  window.alert("Thank you for playing Robot Gladiators! Come back soon!");
+  } else {
+    window.alert("Thank you for playing Robot Gladiators! Come back soon!");
   }
 };
 
+// go to shop between battles function
 var shop = function() {
   // ask player what they'd like to do
   var shopOptionPrompt = window.prompt(
     "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter ond: 'REFILL', 'UPGRAD', or 'LEAVE' to make a choice."
   );
+
   // use switch to carry out action
   switch (shopOptionPrompt) {
     case "REFILL":
@@ -148,7 +146,6 @@ var shop = function() {
         // increase health and decrease money
         playerHealth = playerHealth + 20;
         playerMoney = playerMoney - 7;
-        break;
       } else {
         window.alert("You don't have enough money!");
       }
@@ -161,7 +158,6 @@ var shop = function() {
         // increase attack and decrease money
         playerAttack = playerAttack + 6;
         playerMoney = playerMoney - 7;
-        break;
       } else {
         window.alert("You don't have enough money!");
       }
