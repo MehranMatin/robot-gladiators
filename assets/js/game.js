@@ -97,7 +97,6 @@ var fight = function(enemy) {
         window.alert(playerInfo.name + ' still has ' + playerInfo.health + ' health left.');
       }
     }
-    debugger;
     isPlayerTurn = !isPlayerTurn; // switch turn order for next round
   }
 };
@@ -204,11 +203,6 @@ var shop = function() {
       break;
   }
 };
-/* END GAME FUNCTIONS */
-
-// ***************************************
-/* GAME INFORMATION / VARIABLES */
-// ***************************************
 
 // SET NAME function
 // ***************************************
@@ -222,6 +216,14 @@ var getPlayerName = function() {
   console.log("Your robot's name is " + name);
   return name;
 }
+
+/* END GAME FUNCTIONS */
+
+
+
+// ***************************************
+/* GAME INFORMATION / VARIABLES */
+// ***************************************
 
 // PLAYER INFORMATION object
 // ***************************************
@@ -240,8 +242,7 @@ var playerInfo = {
       window.alert("Refilling player's health by 20 for 7 dollars.");
       this.health += 20;
       this.money -= 7;
-    } 
-    else {
+    } else {
       window.alert("You don't have enough money!");
     }
   },
@@ -250,8 +251,7 @@ var playerInfo = {
       window.alert("Upgrading player's attack by 6 for 7 dollars.");
       this.attack += 6;
       this.money -= 7;
-    } 
-    else {
+    } else {
       window.alert("You don't have enough money!");
     }
   }
